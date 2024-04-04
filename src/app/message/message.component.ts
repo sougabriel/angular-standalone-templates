@@ -1,17 +1,16 @@
 import { Component, inject } from '@angular/core';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { BarAnnotatedComponent } from './bar-annotated/bar-annotated.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MakeActionMessageComponent } from './make-action-message/make-action-message.component';
 
 @Component({
   selector: 'message',
   standalone: true,
   imports: [MatSnackBarModule, MatButtonModule],
-  templateUrl: './message.component.html',
-  styleUrl: './message.component.scss',
+  template: ` <button (click)="openSnackBar()">Menssagem</button> `,
+  styles: '',
 })
 export class MessageComponent {
-
   protected option: number = 0;
   protected message = inject(MatSnackBar);
 
@@ -20,25 +19,25 @@ export class MessageComponent {
   }
 
   protected openSnackBar() {
-    const messageRef = this.message.openFromComponent(BarAnnotatedComponent, {
-      duration: 3000,
-      verticalPosition: 'bottom',
-      horizontalPosition: 'start',
-      politeness: 'off',
-    });
+    const messageRef = this.message.openFromComponent(MakeActionMessageComponent,
+      {
+        duration: 3000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'start',
+        politeness: 'off',
+      }
+    );
 
     messageRef.afterOpened().subscribe(() => {
-      console.log('Abriu Mensagem!');
+      console.log('The Message has Opened! ');
     });
 
     messageRef.onAction().subscribe(() => {
-      console.log('Ativou Ação!');
+      console.log('An Action as Activated! ');
     });
 
     messageRef.afterDismissed().subscribe(() => {
-      console.log('Fechou Mensage!');
+      console.log('The Message has Closed! ');
     });
-
   }
-
 }

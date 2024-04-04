@@ -17,18 +17,17 @@ import { MatButtonModule } from '@angular/material/button';
     MatSnackBarAction,
   ],
   template: `
-    <span class="message" matSnackBarLabel> Desfazer Menssagem? </span>
+    <span class="message" matSnackBarLabel> Make a Action? </span>
     <span matSnackBarActions>
       <button
         mat-button
         matSnackBarAction
-        (click)="selectOption(1)"
         (click)="mensagemRef.dismissWithAction()"
       >
-        Sim
+        Yes
       </button>
       <button mat-button matSnackBarAction (click)="mensagemRef.dismiss()">
-        Não
+        No
       </button>
     </span>
   `,
@@ -41,12 +40,8 @@ import { MatButtonModule } from '@angular/material/button';
     }
   `,
 })
-export class BarAnnotatedComponent {
+export class MakeActionMessageComponent {
+
   mensagemRef = inject(MatSnackBarRef);
 
-  protected option: number = 0;
-
-  selectOption(option: number) {
-    this.option = option;
-  }
 }
