@@ -4,8 +4,10 @@ import {
   MatSnackBarActions,
   MatSnackBarLabel,
   MatSnackBarRef,
+  MAT_SNACK_BAR_DATA
 } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
+import { Message } from '../interface/message';
 
 @Component({
   selector: 'app-bar-annotated',
@@ -17,7 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatSnackBarAction,
   ],
   template: `
-    <span class="message" matSnackBarLabel> Make a Action? </span>
+    <span class="message" matSnackBarLabel> {{ message.message }} </span>
     <span matSnackBarActions>
       <button
         mat-button
@@ -41,7 +43,8 @@ import { MatButtonModule } from '@angular/material/button';
   `,
 })
 export class MakeActionMessageComponent {
+  protected mensagemRef = inject(MatSnackBarRef);
+  protected message: Message = inject(MAT_SNACK_BAR_DATA);
 
-  mensagemRef = inject(MatSnackBarRef);
-
+  constructor() {}
 }
