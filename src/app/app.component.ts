@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { MessageService } from './message/service/message.service';
+import { Message } from './message/interface/message';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +11,10 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'standalone-templates';
+  protected messageService = inject(MessageService);
+
+  protected actionMessage: Message = {
+    message: 'Make an Action? ',
+    duration: 5000
+  }
 }
