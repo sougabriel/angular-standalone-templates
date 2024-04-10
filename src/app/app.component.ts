@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MessageService, Message } from './MessageModule';
+import { MessageService } from './message-service/message.service';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +12,16 @@ import { MessageService, Message } from './MessageModule';
 export class AppComponent {
   protected messageService = inject(MessageService);
 
-  openMessage() {
-    const messageRef = this.messageService.openMessage();
+  protected openMessage() {
+    const messageRef = this.messageService.openMessage('Dismiss message with an action?', 'Yes');
     messageRef.afterOpened().subscribe(() => {
-      console.log('The Message has Opened! ')
+      console.log('The message has been opened!');
+    });
+    messageRef.onAction().subscribe(() => {
+      console.log('An action has been activated!');
+    });
+    messageRef.afterDismissed().subscribe(() => {
+      console.log('The message has been closed!');
     });
   }
 
