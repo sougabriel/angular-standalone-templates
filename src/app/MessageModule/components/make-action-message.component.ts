@@ -7,7 +7,7 @@ import {
   MAT_SNACK_BAR_DATA
 } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
-import { Message } from '../interface/message';
+import { Message } from '../interfaces/simple-message';
 
 @Component({
   selector: 'app-bar-annotated',
@@ -19,7 +19,7 @@ import { Message } from '../interface/message';
     MatSnackBarAction,
   ],
   template: `
-    <span class="message" matSnackBarLabel> {{ message.message }} </span>
+    <span class="message" matSnackBarLabel> {{ message.text }} </span>
     <span matSnackBarActions>
       <button
         mat-button
