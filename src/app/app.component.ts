@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MessageService } from './message/service/message.service';
-import { Message } from './message/interface/message';
+import { MessageService, Message } from './MessageModule';
 
 @Component({
   selector: 'app-root',

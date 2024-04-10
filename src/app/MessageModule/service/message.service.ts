@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Message } from '../interface/message';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MakeActionMessageComponent } from '../make-action-message/make-action-message.component';
+import { MakeActionMessageComponent } from '../components/make-action-message.component';
 
 @Injectable({
   providedIn: 'root',
