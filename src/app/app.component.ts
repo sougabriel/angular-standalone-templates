@@ -12,8 +12,11 @@ import { MessageService, Message } from './MessageModule';
 export class AppComponent {
   protected messageService = inject(MessageService);
 
-  protected actionMessage: Message = {
-    message: 'Make an Action? ',
-    duration: 5000
+  openMessage() {
+    const messageRef = this.messageService.openMessage();
+    messageRef.afterOpened().subscribe(() => {
+      console.log('The Message has Opened! ')
+    });
   }
+
 }
