@@ -8,8 +8,33 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   selector: 'scroll-progress-bar',
   standalone: true,
   imports: [MatProgressBar, MatButtonModule, MatIconModule, MatTooltipModule],
-  templateUrl: './scroll-progress-bar.component.html',
-  styleUrl: './scroll-progress-bar.component.scss',
+  template: `
+    <mat-progress-bar mode="determinate" [value]="scrollPercentage()">
+    </mat-progress-bar>
+    @if (scrollPercentage() > 10) {
+    <button
+      mat-icon-button
+      color="primary"
+      (click)="scrollToTop()"
+      aria-label="Button with a arrow upward icon for return to top"
+      matTooltip="Return to top"
+      matTooltipPosition="above"
+    >
+      <mat-icon>arrow_upward</mat-icon>
+    </button>
+    }
+  `,
+  styles: `
+    mat-progress-bar {
+      position: sticky;
+      top: 0;
+    }
+    button {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+    }
+  `,
 })
 export class ScrollProgressBarComponent {
   protected scrollPercentage = signal(0);
