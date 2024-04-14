@@ -29,18 +29,19 @@ $dark-theme: mat.define-dark-theme(
 @media (prefers-color-scheme: dark) {
   @include mat.all-component-colors($dark-theme);
   body {
-    background-color: #333333;
-    color: #ffffff;
+    background-color: #333;
+    color: #fff;
   }
 }
 
 /* You can add global styles to this file, and also import other style files */
-html,
-body {
-  height: 100%;
+* {
+  position: relative;
+}
+html {
+  height: 100dvh;
   scroll-behavior: smooth;
 }
 body {
   margin: 0;
-  font-family: "Courier New", "Helvetica Neue", sans-serif;
 }
