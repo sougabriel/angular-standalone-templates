@@ -1,0 +1,7 @@
+{
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.component.ts": "${capture}.component.html,${capture}.component.scss,${capture}.component.spec.ts,${capture}.module.ts,${capture}-routing.module.ts,index.ts",
+    "index.html": "${capture}styles.scss,${capture}favicon.ico",
+  }
+}
